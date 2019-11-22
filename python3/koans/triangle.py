@@ -19,6 +19,13 @@
 
 
 def triangle(a, b, c):
+    if not all(side > 0 for side in [a, b, c]):
+        raise TriangleError(AttributeError(
+            'All sides should be greater than 0'))
+    if a + b + c <= 2 * max(a, b, c):
+        raise TriangleError(AttributeError(
+            'The sum of any two sides should be greater than the third one'))
+
     if len({a, b, c}) == 1:
         return 'equilateral'
     elif len({a, b, c}) == 2:
